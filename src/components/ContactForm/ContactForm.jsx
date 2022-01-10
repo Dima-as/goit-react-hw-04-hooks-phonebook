@@ -16,10 +16,11 @@ export default function ContactForm({ onSubmit }) {
   };
 
   const hendleNameChange = (e) => {
-    setName(e.currentTarget.value);
-  };
-  const hendleTelChange = (e) => {
-    setNumber(e.currentTarget.value);
+    const { name, value } = e.target;
+    if (name === "name") {
+      return setName(value);
+    }
+    setNumber(value);
   };
 
   const hendleSubmit = (e) => {
@@ -47,7 +48,7 @@ export default function ContactForm({ onSubmit }) {
       <label htmlFor={numberInputId} className={s.item}>
         <input
           id={numberInputId}
-          onChange={hendleTelChange}
+          onChange={hendleNameChange}
           value={number}
           className={s.input}
           placeholder="459-12-56"
